@@ -1,14 +1,14 @@
 package com.exemplo.biblioteca.service;
 
-import com.exemplo.biblioteca.model.Livro;
-import com.exemplo.biblioteca.repository.BibliotecaRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.exemplo.biblioteca.model.Livro;
+import com.exemplo.biblioteca.repository.BibliotecaRepository;
 
 @Service
 public class BibliotecaService {
@@ -25,6 +25,9 @@ public class BibliotecaService {
         }
         if (livro.getAnoPublicacao() == null || livro.getAnoPublicacao() <= 1500) {
             throw new ResponseStatusException(BAD_REQUEST, "Ano de publicação deve ser maior que 1500");
+        }
+        if (livro.getGenero() == null || livro.getGenero().isBlank()) {
+            throw new ResponseStatusException(BAD_REQUEST, "Genero não pode ser vazio");
         }
         if (livro.getDisponivel() == null) {
             livro.setDisponivel(true);

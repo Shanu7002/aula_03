@@ -5,6 +5,7 @@ public class Livro {
     private Long id;
     private String titulo;
     private String autor;
+    private String genero;
     private Integer anoPublicacao;
     private String isbn;
     private Boolean disponivel;
@@ -12,10 +13,11 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(Long id, String titulo, String autor, Integer anoPublicacao, String isbn, Boolean disponivel) {
+    public Livro(Long id, String titulo, String autor, String genero, Integer anoPublicacao, String isbn, Boolean disponivel) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
+        this.genero = genero;
         this.anoPublicacao = anoPublicacao;
         this.isbn = isbn;
         this.disponivel = disponivel;
@@ -43,6 +45,13 @@ public class Livro {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public Integer getAnoPublicacao() {
